@@ -1,24 +1,19 @@
-# vue-paginnation
+# vue3-table-with-pagination
+
+## Description
+Simple table with pagination. Written in Vue 3 + Composition API
 
 ## Project setup
+This will install all dependencies and start the dev server. 
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+npm run start:fresh
 ```
 
-### Compiles and minifies for production
+
+After initial setup you can run:
 ```
-npm run build
+npm run start:dev
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
