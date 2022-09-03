@@ -1,46 +1,3 @@
-<template>
-  <div :class="$style.table">
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-        </tr>
-      </thead>
-      <tbody>
-        <template v-if="isFetching">
-          <tr>
-            <td colspan="2">Data is loading</td>
-          </tr>
-        </template>
-        <template v-else-if="data">
-          <tr v-for="item of data.results" :key="item.id">
-            <td>{{ item.id }}</td>
-            <td>{{ item.name }}</td>
-          </tr>
-        </template>
-      </tbody>
-    </table>
-    <div class="paggination">
-      <button :disabled="isStartDisabled" @click="paginnationController.start">
-        Start
-      </button>
-      <button
-        :disabled="isStartDisabled"
-        @click="paginnationController.previous"
-      >
-        Previous
-      </button>
-      <button :disabled="isEndDisabled" @click="paginnationController.next">
-        Next
-      </button>
-      <button :disabled="isEndDisabled" @click="paginnationController.end">
-        End
-      </button>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { onMounted, ref, computed, watch } from "vue";
 import { useFetch } from "@vueuse/core";
@@ -91,7 +48,7 @@ watch(
   { immediate: false }
 );
 
-const paginnationController = {
+const paginationController = {
   start: () => {
     currentPage.value = 0;
   },
@@ -106,6 +63,48 @@ const paginnationController = {
   },
 };
 </script>
+<template>
+  <div :class="$style.table">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <template v-if="isFetching">
+          <tr>
+            <td colspan="2">Data is loading</td>
+          </tr>
+        </template>
+        <template v-else-if="data">
+          <tr v-for="item of data.results" :key="item.id">
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+          </tr>
+        </template>
+      </tbody>
+    </table>
+    <div class="pagination">
+      <button :disabled="isStartDisabled" @click="paginationController.start">
+        Start
+      </button>
+      <button
+        :disabled="isStartDisabled"
+        @click="paginationController.previous"
+      >
+        Previous
+      </button>
+      <button :disabled="isEndDisabled" @click="paginationController.next">
+        Next
+      </button>
+      <button :disabled="isEndDisabled" @click="paginationController.end">
+        End
+      </button>
+    </div>
+  </div>
+</template>
 
 <style module lang="scss">
 .table {
